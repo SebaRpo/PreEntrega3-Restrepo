@@ -1,0 +1,71 @@
+@import "../utilities/mixin";
+/* Página Personalizados */
+.contenedorSeccion__Personalizados {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+      url('../img/personalizadosHero.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 80% 90%;
+    height: 25vh;
+  }
+  
+  .contenedorSeccion__Personalizados--h2 > img {
+    width: 20%;
+  }
+  
+  .logoPersonalizado > img {
+    width: 20%;
+  }
+  
+  .contenedorSeccion__Personalizadosblog {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "p1 img1"
+      "img2 p2";
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .contenedorSeccion__Personalizadosblog--p1 {
+    grid-area: p1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.5rem;
+  }
+  
+  .contenedorSeccion__Personalizadosblog--p2 {
+    grid-area: p2;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.5rem;
+  }
+  
+  .img1Perso {
+    grid-area: img1;
+    width: 100%;
+  }
+  
+  .img2Perso {
+    grid-area: img2;
+    width: 100%;
+  }
+
+@media screen and (min-width:600px) {
+  .contenedorSeccion__Personalizadosblog--p1{
+    @include fuente;
+  }
+.contenedorSeccion__Personalizadosblog--p2{
+    @include fuente;
+  }
+
+  .img1Perso{
+    grid-area: img1;
+    width: 100%;
+  }
+  .img2Perso{
+    grid-area: img2;
+    width: 100%;
+  }
+}
+

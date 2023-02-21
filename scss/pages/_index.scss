@@ -1,0 +1,77 @@
+@import "../base/colors";
+
+/* Estilos del Main */
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+
+    .banner1{
+        margin: 1rem;
+        width: 80%;
+        flex-direction: column;
+    }
+    .productosBanner img{
+        border-radius: 2px;
+        box-shadow: 0rem 0.2rem 0.7rem $color-semitransparentdark;
+    }
+    .masVistos__h3{
+        background-color: transparent;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        border: 1px solid $color-light;
+        letter-spacing: 0.001rem;
+        padding: 0;
+        margin-bottom:1rem ;
+        transition: 0.5s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Staatliches', cursive;
+    }
+
+    img{
+        width: 80%; 
+
+        &.c-img{
+            filter: brightness(0.8);
+        }
+    }
+
+    .slider{
+        display: flex;
+        max-width: 40rem;
+        width: 100%;
+        border-radius: 2px;
+        box-shadow: 0rem 0.5rem 0.7rem $color-semitransparentdark;
+
+        img{
+            width: 100%;
+            scroll-snap-align: center;
+        }
+    }
+}
+
+@media screen and (min-width:1024px){
+    .logo{
+        height: 3.6rem;/* Establecemos una altura para la imagen */
+    }
+    .masVistos {
+        display: flex;
+      
+        &__h3 {
+            font-size: 2.6rem;
+        }
+      }
+      
+      .nav__link {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+      }
+      
+}

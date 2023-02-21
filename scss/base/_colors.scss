@@ -1,0 +1,16 @@
+// PALETA DE COLORES 
+$color-light: #fff;
+$color-light2: rgb(230, 230, 230);
+$color-dark: #000;
+$color-transparentdark: rgba(0, 0, 0, 0.1);
+$color-semitransparentdark: rgba(0, 0, 0, 0.5);
+$color-gray:#333;
+
+// Paleta de colores en forma de maps 
+$palette: (
+    "light": #fff,
+    "light2": rgb(230, 230, 230),
+    "dark": #000,
+    "transparentdark": rgba(0, 0, 0, 0.1),
+    "semitransparentdark": rgba(0, 0, 0, 0.5),
+);

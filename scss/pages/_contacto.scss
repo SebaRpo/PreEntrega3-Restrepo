@@ -1,0 +1,73 @@
+@import "../base/colors";
+@import "../utilities/extend";
+
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    padding: auto;
+    margin: auto;
+
+    h2{
+        font-family: 'Roboto', sans-serif;
+        font-weight: bolder;
+        font-size: 25px;
+    }
+
+    img{
+        width: 70%;
+    }
+
+    input[type="text"], input[type="email"], textarea {
+        width: 100%;
+        border-bottom-style: 1px solid $color-dark;
+        padding: 10px;
+        font-size: 16px;
+        margin-right: 5px;
+    }
+
+    legend{
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+    }
+
+    .ingresodatos{
+        position: relative;
+        width: 100%;
+        margin-top: 5px;
+
+        input,
+        textarea{
+            @extend %forms;
+        }
+
+        label{
+            display: flex;
+        }
+    }
+}
+@media screen and (min-width:600px) {
+
+    .SeccionFr img{
+        width: 40%;
+    }
+}
+
+
+@media screen and (min-width:1024px){
+    .SeccionFr {
+        grid-column: 1/13;
+        width: min(60rem);
+        margin: 0 auto;
+        margin-bottom: 3rem;
+        fieldset {
+            border: none;
+        }
+        legend {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+    }
+}

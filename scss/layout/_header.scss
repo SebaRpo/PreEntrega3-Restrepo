@@ -1,0 +1,217 @@
+@import "../base/colors";
+@import "../base/typography";
+
+/* Establecemos un contenedor para centrar los elementos y evitar que se sobresalgan del límite de la página */
+
+.contenedor{
+    margin: 0 auto; /* Centramos el contenedor */
+    width: 90%; /* Establecemos un ancho del 90% */
+    max-width: 1200px;  /* Establecemos un ancho máximo */
+    overflow: hidden; /* Ocultamos cualquier contenido que sobresalga */ 
+    z-index: 10;
+}
+
+/* Establecemos un estilo para el encabezado */
+.encabezado{
+    background-image: linear-gradient($color-transparentdark, $color-semitransparentdark),
+                      url('../img/Background1.jpg'); /* Establecemos una imagen de fondo, además utilizamos dos colores: uno con una transparencia del 10% (rgba(0, 0, 0, 0.1)) y otro con una transparencia del 50% (rgba(0, 0, 0, 0.5)) */
+    background-size: cover;/* Ajustamos la imagen al tamaño del contenedor */
+    background-position: center;
+    width: 100%;
+    min-height: 15vh;/* Establecemos una altura mínima */
+    height: 15vh;/* Establecemos una altura igual a la pantalla  */
+    color: $color-light;/* Establecemos el color de texto con una variable por si se quiere actualizar en sass */ 
+    z-index: 10;
+}
+/* Establecemos estilos para el menú de navegación */
+//Se utiliza nesting para un fácil entendimiento y dar más especifidad
+.nav {
+    /* Establecemos variables para controlar el estado del menú */
+    --state-close: scale(0);/*se escalará en un 0%, es decir, desaparecerá*/
+    --state-hamburguer: scale(1);/*se escalará en un 100%, es decir, aparecerá*/
+    --state-menu: translate(-100%);/*se moverá hacia la izquierda en un 100% de su tamaño, es decir, desaparecerá de la pantalla*/
+  
+    padding: 40px 0;/* Establecemos un padding superior e inferior */
+    display: grid;/* Utilizamos una grilla para organizar los elementos */
+    justify-content: space-between;/* Justificamos los elementos en el espacio entre el logo y el botón de menú */
+    align-items: center;/* Alineamos los elementos en el centro */
+    grid-template-columns: repeat(2, max-content);/* una cuadrícula de 2 columnas cuyo tamaño se ajusta al contenido más grande dentro de cada columna */
+    z-index: 12;/* Establecemos el orden de los elementos */
+
+
+/* Establecemos un estilo para cuando el menú esté activo */
+    /* Utilizamos anidado el simbolo ampersand */ 
+&:target {
+    --state-menu: translate(0);/*  Mostramos el menú */
+    --state-close: scale(1);/* Mostramos el botón de cerrar */
+    --state-hamburguer: scale(0);/* Ocultamos el botón de menú */ 
+    z-index: 10;
+}
+  /* Establecemos estilos para el logo */
+    &__logo {
+      font-size: 2.5rem;/* Establecemos el tamaño del texto es una guía cuando la imagen del logo no esta */
+      z-index: 10;/* Establecemos el orden de los elementos */
+    }
+
+    .logo{
+        height: 2.4rem;/* Establecemos una altura para la imagen */
+    }
+  
+    &__hamburguer,
+    &__close {
+      cursor: pointer;/* Establecemos el cursor como pointer para indicar que son clickeables */
+      grid-column: -2/-1;/* Posicionamos los 2 botones en la última columna */
+      grid-row: 1/2;/* Posicionamos los 2 botones en la primera fila */
+      transition: .4s transform;/* Establecemos una transición para cuando se active el menú */
+      z-index: 10;
+  
+      &__icon {
+        width: 50px;
+      }
+    }
+  
+    &__hamburguer {
+      transform: var(--state-hamburguer);/*Permite que cambie su apariencia dinámicamente en función del valor asignado a la variable*/
+    }
+  
+    &__close {
+      transform: var(--state-close);
+    }
+  
+    &__links {
+      background-color: $color-dark;/* Establecemos un color de fondo */
+      position: absolute;/* Posicionamos los enlaces en una posición absoluta */
+      top: 0;/* Posicionamos los enlaces en la parte superior */
+      bottom: 0;/* Posicionamos los enlaces en la parte inferior */
+      left: 0;/* Posicionamos los enlaces en la parte izquierda */
+      right: 0;/* Posicionamos los enlaces en la parte derecha */
+      padding: 0;/* Establecemos un padding igual a cero */
+      display: grid;/* Utilizamos una grilla para organizar los enlaces */
+      align-content: center;/* Alineamos los enlaces al centro */
+      gap: 2em;/* Establecemos un espacio entre los enlaces */
+      padding-left: 5%;/* Establecemos un padding izquierdo */
+      transform: var(--state-menu);/* Utilizamos la variable para controlar la posición del menú */
+      transition: .3s transform;/* Establecemos una transición para cuando se active el menú */
+      z-index: 9;
+      
+    }
+    /* Establecemos estilos para los enlaces del menú secundario */
+    .secmenu {
+        list-style: none;/* Quitamos los viñetas de la lista secundaria*/
+    
+      &__li--a {
+        color: $color-light;/* Establecemos el color de texto */
+        text-decoration: none;/* Quitamos la decoración de los enlaces */
+        font-size: 1rem;/* Establecemos el tamaño del texto */
+        letter-spacing: 2px;/* Establecemos el espaciado entre letras */
+        margin-left: 10px;
+        padding: 10px;
+      }
+    }
+  /* Establecemos estilos para los elementos de la lista del menú principal */
+    &__item,
+    &__item--sec {
+      list-style: none;/* Quitamos los viñetas de la lista */
+    }
+  /* Establecemos estilos para los enlaces del menú principal */
+    &__link {
+      color: $color-light;/* Establecemos el color de texto */
+      text-decoration: none;/* Quitamos la decoración de los enlaces */
+      font-size: 1.2rem;/* Establecemos el tamaño del texto */
+      letter-spacing: 2px;/* Establecemos el espaciado entre letras */
+    }
+    &.logo{
+        height: 2.4rem;/* Establecemos una altura para la imagen */
+    }
+
+}
+@media screen and (min-width: 600px) {
+    .encabezado{
+      background-image: 
+      linear-gradient($color-transparentdark, $color-semitransparentdark),
+      url('../img/Background1.jpg');/* Establecemos una imagen de fondo, además utilizamos dos colores: uno con una transparencia del 10% (rgba(0, 0, 0, 0.1)) y otro con una transparencia del 20% (rgba(0, 0, 0, 0.2)) */
+      background-repeat: no-repeat;/* Ajustamos la imagen al tamaño del contenedor */
+      background-position: center;
+      background-size: cover;
+      min-height: 12vh;/* Establecemos una altura mínima */
+      height: 12vh;/* Establecemos una altura igual a la pantalla  */
+      color: $color-light;/* Establecemos el color de texto */ 
+  }
+
+  /* Ocultamos el botón de menú y mostramos el menú */
+  .nav{
+      --state-hamburguer:scale(0);
+      --state-menu: translate(0);
+  }
+  /* Ocultamos el botón de cerrar cuando el menú esté activo */
+  .nav:target{
+      --state-close: scale(0);
+  }
+  /* Removemos la posición absoluta y el color de fondo de los enlaces del menú */
+  .nav__links{
+      padding: 0;
+      background-color: unset;
+      position: unset;
+      gap: 1.5em;/* Establecemos un espacio entre los enlaces */
+      grid-auto-flow: column;/* Establecemos que los enlaces se organizarán en columnas */
+      transform: unset;/* Removemos la transformación */
+      grid-column: -2/-1; /* Posicionamos los enlaces en la última columna */
+      grid-row: 1/2;/* Posicionamos los enlaces en la primera fila */
+  }
+  /* Establecemos estilos para los enlaces del menú principal cuando la pantalla es mayor a 768px */
+  .nav__link{
+      font-size: 1rem;/* Establecemos el tamaño del texto */
+      letter-spacing: none;/* Removemos el espaciado entre letras */
+  }
+  /* Establecemos un estilo al pasar el cursor sobre los elementos de la lista del menú principal */
+  .nav__item:hover{
+      transform: scale(1);/* Aumentamos el tamaño del elemento */
+      box-shadow: 0px 0px 5px 0px $color-semitransparentdark;/* Establecemos una sombra */
+      visibility: visible;/* Hacemos visible el elemento */
+      opacity: 1;
+  }
+  /* Establecemos un estilo al pasar el cursor sobre los elementos de la lista del menú secundario */
+  .nav__item--sec:hover .secmenu{
+    transform: scale(1);/* Aumentamos el tamaño del elemento */
+     box-shadow: 0px 0px 5px 0px $color-semitransparentdark;/* Establecemos una sombra */
+     display: block;/* Mostramos el menú secundario */
+    }
+
+  /* Establecemos estilos para el menú secundario */
+
+  .secmenu{
+    width: 200px;/* Establecemos un ancho */
+    display: flex;/* Utilizamos flexbox para organizar los elementos */
+    flex-direction: column;/* Establecemos que los elementos se organizarán en columnas */
+    align-items: stretch; /* Alineamos los elementos al centro*/
+    position: absolute;/* Posicionamos el menú secundario en una posición absoluta */
+    top: 75px;
+    display: none;
+    /* box-shadow: 0px 0px 5px 0px $color-semitransparentdark; */
+    list-style: none;
+    background-color: $color-dark;
+    
+  }
+  .nav__item--sec a:hover{
+    transform: scale(1);/* Aumentamos el tamaño del elemento */
+    box-shadow: 0px 0px 5px 0px $color-semitransparentdark;/* Establecemos una sombra */
+    display: block;/* Mostramos el menú secundario */
+    
+  }
+  .secmenu__li--a{
+    display: block;
+    text-decoration: none;/* Quitamos la decoración de los enlaces */
+    color: $color-dark;
+    padding: 0px;
+    margin-left: 0;
+    
+         
+  }
+  .secmenu__li{
+      text-decoration: none;
+  }
+  .secmenu__li--a:hover{
+    transform: scale(1);/*cambia su tamaño (escalando) cuando el cursor del mouse está sobre él*/
+    color: $color-gray;
+  }
+}
